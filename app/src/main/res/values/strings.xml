@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">FMS JOB FAIR</string>
+    <string name="title_activity_feed_news">FeedNews</string>
+    <string name="font_name">Nithan.ttf</string>
+    <string-array name="group_company">
+        <item>กลุ่มธนาคารและการลงทุน</item>
+        <item>กลุ่มจัดจำหน่ายและกระจายสินค้า</item>
+        <item>กลุ่มเทคโนโลยีและการสื่อสาร</item>
+        <item>กลุ่มศึกษาต่อและพัฒนาตนเอง</item>
+        <item>กลุ่มผลิตและแปรรูป</item>
+    </string-array>
+    <string name="title_activity_main2">Main2Activity</string>
+</resources>

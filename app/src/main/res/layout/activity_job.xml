@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="maneewan.fms_job.JobActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#c54ac7"
+        android:layout_weight="1"
+        >
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:src="@drawable/feed_h"
+            android:background="#00ffffff"
+            android:onClick="clickToFeed3" />
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:src="@drawable/company_h"
+            android:background="#00ffffff"
+            android:onClick="clickToCompany3" />
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:src="@drawable/job_h"
+            android:background="#36925c"/>
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:src="@drawable/layout_h"
+            android:background="#00ffffff"
+            android:onClick="clickToLayout3" />
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:src="@drawable/poll_h"
+            android:background="#00ffffff"
+            android:onClick="clickToPoll3" />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="สาขาวิชา"
+                android:id="@+id/button3"
+                android:gravity="center"
+                android:layout_marginTop="100dp"
+                android:background="#7cf97a7a"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                android:onClick="clickToJobMajor"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="หน่วยงาน"
+                android:id="@+id/button3"
+                android:gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="#7c7af9f1"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                android:onClick="clickToJobCom"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="ตำแหน่งงานทั้งหมด"
+                android:id="@+id/button3"
+                android:gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="#9af2812c"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                android:onClick="clickToJobAll"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

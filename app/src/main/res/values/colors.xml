@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="feed">#FF0066</color>
+    <color name="company">#0099CC</color>
+    <color name="job">#00CC99</color>
+    <color name="layout">#FFCC66</color>
+    <color name="poll">#FF3333</color>
+    <color name="exit">#00CCFF</color>
+    <color name="bg">#C71585</color>
+    <color name="black">#000</color>
+</resources>
