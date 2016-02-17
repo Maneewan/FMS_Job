@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //start grid view
-        gridView = (GridView) findViewById(R.id.GridViewCustom);
+        /*gridView = (GridView) findViewById(R.id.GridViewCustom);*/
         // Create the Custom Adapter Object
         gridViewHome = new GridViewActivity(this);
         // Set the Adapter to GridView
