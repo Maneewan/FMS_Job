@@ -76,22 +76,22 @@ public class FeedNewsActivity extends AppCompatActivity implements AdapterView.O
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(this);
 
-       /* swipeLayout = (SwipeRefreshLayout)findViewById(R.id.refresh_news);
+        /*final SwipeRefreshLayout swipeLayout = (SwipeRefreshLayout)findViewById(R.id.refresh_news);
         swipeLayout.setColorSchemeResources(R.color.company, R.color.feed, R.color.job, R.color.layout);
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
 
+
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        lv.setAdapter(adapter);
-                        swipeLayout.setRefreshing(false);
+                       swipeLayout.setRefreshing(false);
                     }
                 }, 2000);
             }
-        });*/
-
+        });
+*/
     }
 
     @Override
