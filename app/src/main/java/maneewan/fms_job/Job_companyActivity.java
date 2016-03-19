@@ -2,6 +2,7 @@ package maneewan.fms_job;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,13 +33,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Job_companyActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     HttpURLConnection connection = null;
-    String[] id_company;
+    String[] id_company,company_logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +56,13 @@ public class Job_companyActivity extends AppCompatActivity implements AdapterVie
     ArrayList<ContentItem> objects = new ArrayList<ContentItem>();
     JSONArray jsonArrayCompany = getListCompany();
     id_company = new String[jsonArrayCompany.length()];
+        company_logo = new String[jsonArrayCompany.length()];
     for (int i = 0; i < jsonArrayCompany.length(); i++) {
         try {
-            objects.add(new ContentItem(String.valueOf(i + 1), jsonArrayCompany.getJSONObject(i).getString("company_name")));
+            objects.add(new ContentItem(jsonArrayCompany.getJSONObject(i).getString("company_name"),
+                    jsonArrayCompany.getJSONObject(i).getString("company_logo")));
             id_company[i] = jsonArrayCompany.getJSONObject(i).getString("id_company");
+            company_logo[i] = jsonArrayCompany.getJSONObject(i).getString("company_logo");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -68,6 +74,15 @@ public class Job_companyActivity extends AppCompatActivity implements AdapterVie
     lv.setOnItemClickListener(this);
 
 }
+    public static Drawable LoadImageFromWebOperations(String nameImage) {
+        try {
+            InputStream is = (InputStream) new URL(MainActivity.mainhttp + "/fms_job//assets/uploads/" + nameImage).getContent();
+            Drawable d = Drawable.createFromStream(is, "src name");
+            return d;
+        } catch (Exception e) {
+            return null;
+        }
+    }
     public void onItemClick(AdapterView<?> av, View v, int pos, long arg3) {
         Intent i;
         i = new Intent(this, Job_position_by_company.class);
@@ -76,12 +91,11 @@ public class Job_companyActivity extends AppCompatActivity implements AdapterVie
         //finish();
     }
 private class ContentItem {
-    String name;
-    String desc;
+    String desc,namepic;
 
-    public ContentItem(String n, String d) {
-        name = n;
+    public ContentItem(String d, String pic) {
         desc = d;
+        namepic = pic;
     }
 }
 private class MyAdapter extends ArrayAdapter<ContentItem> {
@@ -102,8 +116,8 @@ private class MyAdapter extends ArrayAdapter<ContentItem> {
             holder = new ViewHolder();
 
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.listcompany, null);
-            //holder.tvName1 = (TextView) convertView.findViewById(R.id.tvName1);
-            holder.name1 = (TextView) convertView.findViewById(R.id.name1);
+            holder.imageCompany = (ImageView) convertView.findViewById(R.id.imageCompany);
+            holder.name = (TextView) convertView.findViewById(R.id.name);
 
             convertView.setTag(holder);
 
@@ -111,14 +125,18 @@ private class MyAdapter extends ArrayAdapter<ContentItem> {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        //holder.tvName1.setText(c.name);
-        holder.name1.setText(c.desc);
+        convertView.setTag(holder);
+        holder.name.setText(c.desc);
+        Drawable drawable = LoadImageFromWebOperations(c.namepic);
+        if(drawable != null)
+            holder.imageCompany.setImageDrawable(drawable);
         return convertView;
     }
 
     private class ViewHolder {
 
-        TextView tvName1,name1;
+        TextView name;
+        ImageView imageCompany;
     }
 }
     public JSONArray getListCompany() {

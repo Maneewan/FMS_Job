@@ -71,7 +71,8 @@ public class Job_allActivity extends AppCompatActivity implements AdapterView.On
         for (int i = 0; i < jsonArrayAll.length(); i++) {
 
             try {
-                objects.add(new ContentItem(String.valueOf(i + 1), jsonArrayAll.getJSONObject(i).getString("job_name")));
+                objects.add(new ContentItem(jsonArrayAll.getJSONObject(i).getString("company_name"),
+                        jsonArrayAll.getJSONObject(i).getString("job_name")));
                 id_job_position_main[i] = jsonArrayAll.getJSONObject(i).getString("id_job_position_main");
                 id_major[i] = jsonArrayAll.getJSONObject(i).getString("id_major");
                 id_job[i] = jsonArrayAll.getJSONObject(i).getString("id_job");
@@ -148,7 +149,7 @@ public class Job_allActivity extends AppCompatActivity implements AdapterView.On
                 holder = new ViewHolder();
 
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.listjoball, null);
-                //holder.tvName = (TextView) convertView.findViewById(R.id.tvName);
+                holder.name_company = (TextView) convertView.findViewById(R.id.name_company);
                 holder.name = (TextView) convertView.findViewById(R.id.name);
 
                 convertView.setTag(holder);
@@ -157,14 +158,14 @@ public class Job_allActivity extends AppCompatActivity implements AdapterView.On
                 holder = (ViewHolder) convertView.getTag();
             }
 
-            //holder.tvName.setText(c.name);
+            holder.name_company.setText(c.name);
             holder.name.setText(c.desc);
             return convertView;
         }
 
         private class ViewHolder {
 
-            TextView tvName,name;
+            TextView name_company,name;
         }
     }
     public JSONArray getListAll() {

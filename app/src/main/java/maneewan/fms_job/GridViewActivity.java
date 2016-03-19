@@ -36,8 +36,6 @@ public class GridViewActivity extends ArrayAdapter {
         {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
             row = inflater.inflate(R.layout.activity_grid_view, parent, false);
-
-
             TextView textViewTitle = (TextView) row.findViewById(R.id.textView);
             ImageView imageViewIte = (ImageView) row.findViewById(R.id.imageGrid);
 

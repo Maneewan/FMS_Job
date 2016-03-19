@@ -3,6 +3,7 @@ package maneewan.fms_job;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.StrictMode;
 import android.support.v7.app.AlertDialog;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -33,6 +35,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +73,8 @@ public class Company_by_group extends AppCompatActivity implements AdapterView.O
         for (int i = 0; i < jsonArrayCompany.length(); i++) {
 
             try {
-                objects.add(new ContentItem(String.valueOf(i + 1), jsonArrayCompany.getJSONObject(i).getString("company_name")));
+                objects.add(new ContentItem(jsonArrayCompany.getJSONObject(i).getString("company_name"),
+                        jsonArrayCompany.getJSONObject(i).getString("company_logo")));
                 id_company[i] = jsonArrayCompany.getJSONObject(i).getString("id_company");
                 company_name[i] = jsonArrayCompany.getJSONObject(i).getString("company_name");
                 company_logo[i] = jsonArrayCompany.getJSONObject(i).getString("company_logo");
@@ -93,6 +97,16 @@ public class Company_by_group extends AppCompatActivity implements AdapterView.O
         ListView lv = (ListView) findViewById(R.id.listviewcompanygroup);
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(this);
+    }
+
+    public static Drawable LoadImageFromWebOperations(String nameImage) {
+        try {
+            InputStream is = (InputStream) new URL(MainActivity.mainhttp + "/fms_job//assets/uploads/"+nameImage).getContent();
+            Drawable d = Drawable.createFromStream(is, "src name");
+            return d;
+        } catch (Exception e) {
+            return null;
+        }
     }
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -119,13 +133,15 @@ public class Company_by_group extends AppCompatActivity implements AdapterView.O
 
 
     private class ContentItem {
-        String name;
-        String desc;
+        String desc,namepic;
 
-        public ContentItem(String n, String d) {
-            name = n;
+        public ContentItem(String d, String pic) {
+
             desc = d;
+            namepic = pic;
         }
+
+
     }
     private class MyAdapter extends ArrayAdapter<ContentItem> {
 
@@ -145,8 +161,8 @@ public class Company_by_group extends AppCompatActivity implements AdapterView.O
                 holder = new ViewHolder();
 
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_company_group, null);
-                //holder.tvName = (TextView) convertView.findViewById(R.id.tvName1);
-                holder.name = (TextView) convertView.findViewById(R.id.name1);
+                holder.imageCompany = (ImageView) convertView.findViewById(R.id.imageCompany);
+                holder.name = (TextView) convertView.findViewById(R.id.name);
 
                 convertView.setTag(holder);
 
@@ -154,14 +170,18 @@ public class Company_by_group extends AppCompatActivity implements AdapterView.O
                 holder = (ViewHolder) convertView.getTag();
             }
 
-            //holder.tvName.setText(c.name);
+            convertView.setTag(holder);
             holder.name.setText(c.desc);
+            Drawable drawable = LoadImageFromWebOperations(c.namepic);
+            if(drawable != null)
+                holder.imageCompany.setImageDrawable(drawable);
             return convertView;
         }
 
         private class ViewHolder {
 
             TextView tvName,name;
+            ImageView imageCompany;
         }
     }
     public JSONArray getListCompany() {

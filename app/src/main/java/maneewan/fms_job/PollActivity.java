@@ -58,11 +58,11 @@ public class PollActivity extends AppCompatActivity {
         button_ok = (Button)findViewById(R.id.button_ok);
 
         List<String> listSpinner = new ArrayList();
-        listSpinner.add("1");
-        listSpinner.add("2");
-        listSpinner.add("3");
-        listSpinner.add("4");
-        listSpinner.add("5");
+        listSpinner.add("ปรับปรุง");
+        listSpinner.add("พอใช้");
+        listSpinner.add("ปานกลาง");
+        listSpinner.add("ดี");
+        listSpinner.add("ดีมาก");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, listSpinner);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -86,7 +86,7 @@ public class PollActivity extends AppCompatActivity {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.custom_dialog);
         TextView text = (TextView) dialog.findViewById(R.id.txt_dia);
-        text.setText("คะแนนรวม : "+sum);
+        text.setText("คะแนนประเมินของคุณ คือ : "+sum+"/25");
 
         Button btn_yes = (Button) dialog.findViewById(R.id.btn_yes);
         Button btn_no = (Button) dialog.findViewById(R.id.btn_no);

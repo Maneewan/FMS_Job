@@ -71,7 +71,7 @@
                 android:id="@+id/button3"
                 android:gravity="center"
                 android:layout_marginTop="100dp"
-                android:background="#7cf97a7a"
+                android:background="#FF0066"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
                 android:onClick="clickToJobMajor"/>
@@ -82,7 +82,7 @@
                 android:id="@+id/button3"
                 android:gravity="center"
                 android:layout_marginTop="30dp"
-                android:background="#7c7af9f1"
+                android:background="#3366FF"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
                 android:onClick="clickToJobCom"/>
@@ -93,7 +93,7 @@
                 android:id="@+id/button3"
                 android:gravity="center"
                 android:layout_marginTop="30dp"
-                android:background="#9af2812c"
+                android:background="#FF3333"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
                 android:onClick="clickToJobAll"/>

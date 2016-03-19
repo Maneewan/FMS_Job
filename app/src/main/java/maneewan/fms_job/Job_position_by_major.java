@@ -40,7 +40,7 @@ import java.util.List;
 public class Job_position_by_major extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
     String id_major1;
-    String[] id_major,id_job,id_job_position_main,companyname,amount,work_place,salary,sex,age,education,skill,detail;
+    String[] id_major,id_job,id_job_position_main,company_name,amount,work_place,salary,sex,age,education,skill,detail;
     int indexfinal = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class Job_position_by_major extends AppCompatActivity implements AdapterV
         id_major = new String[jsonArrayMajor.length()];
         id_job = new String[jsonArrayMajor.length()];
         id_job_position_main = new String[jsonArrayMajor.length()];
-        companyname = new String[jsonArrayMajor.length()];
+        company_name = new String[jsonArrayMajor.length()];
         amount = new String[jsonArrayMajor.length()];
         work_place = new String[jsonArrayMajor.length()];
         salary = new String[jsonArrayMajor.length()];
@@ -73,11 +73,12 @@ public class Job_position_by_major extends AppCompatActivity implements AdapterV
         for (int i = 0; i < jsonArrayMajor.length(); i++) {
 
             try {
-                objects.add(new ContentItem(String.valueOf(i + 1), jsonArrayMajor.getJSONObject(i).getString("job_name")));
+                objects.add(new ContentItem(jsonArrayMajor.getJSONObject(i).getString("company_name"),
+                        jsonArrayMajor.getJSONObject(i).getString("major_name")));
                 id_job_position_main[i] = jsonArrayMajor.getJSONObject(i).getString("id_job_position_main");
                 id_major[i] = jsonArrayMajor.getJSONObject(i).getString("id_major");
                 id_job[i] = jsonArrayMajor.getJSONObject(i).getString("id_job");
-                companyname[i] = jsonArrayMajor.getJSONObject(i).getString("company_name");
+                company_name[i] = jsonArrayMajor.getJSONObject(i).getString("company_name");
                 amount[i] = jsonArrayMajor.getJSONObject(i).getString("amount");
                 work_place[i] = jsonArrayMajor.getJSONObject(i).getString("work_place");
                 salary[i] = jsonArrayMajor.getJSONObject(i).getString("salary");
@@ -103,7 +104,7 @@ public class Job_position_by_major extends AppCompatActivity implements AdapterV
         indexfinal = position;
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setMessage("บริษัท : " + companyname[position] + "\n" + "จำนวนที่รับ : " + amount[position] +
+        alertDialogBuilder.setMessage("บริษัท : " + company_name[position] + "\n" + "จำนวนที่รับ : " + amount[position] +
                 "\n" + "สถานที่ปฎิบัติงาน : " + work_place[position] + "\n" + "เงินเดือน : " + salary[position] + "\n"
                 + "เพศ : " + sex[position] + "\n" + "อายุ : " + age[position] + "\n" + "การศึกษา : " + education[position] + "\n" +
                 "ความสามารถ : " + skill[position] + "\n" + "รายละเอียดอื่น ๆ : " + detail[position]);
@@ -149,8 +150,8 @@ public class Job_position_by_major extends AppCompatActivity implements AdapterV
                 holder = new ViewHolder();
 
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_job_position, null);
-                //holder.tvName = (TextView) convertView.findViewById(R.id.tvName1);
-                holder.name = (TextView) convertView.findViewById(R.id.name1);
+                holder.name_company = (TextView) convertView.findViewById(R.id.name_company);
+                holder.name = (TextView) convertView.findViewById(R.id.name);
 
                 convertView.setTag(holder);
 
@@ -158,14 +159,14 @@ public class Job_position_by_major extends AppCompatActivity implements AdapterV
                 holder = (ViewHolder) convertView.getTag();
             }
 
-            //holder.tvName.setText(c.name);
+            holder.name_company.setText(c.name);
             holder.name.setText(c.desc);
             return convertView;
         }
 
         private class ViewHolder {
 
-            TextView tvName,name,d1;
+            TextView name_company,name,d1;
         }
     }
     public JSONArray getListMajor() {

@@ -3,21 +3,29 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvName1"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="4dp"
-        android:textSize="16dp"/>
-    <TextView
-        android:id="@+id/name1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="4dp"
-        android:text="Small Text"
-        android:textSize="16dp"/>
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="150px"
+            android:layout_height="180px"
+            android:id="@+id/imageCompany"
+            android:src="@drawable/company_h" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_marginTop="20dp"
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="4dp"
+                android:text="Small Text"
+                android:textSize="16dp"/>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

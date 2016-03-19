@@ -71,7 +71,7 @@
                android:id="@+id/button3"
                android:gravity="center"
                android:layout_marginTop="120dp"
-               android:background="#7cf97a7a"
+               android:background="#CC0000"
                android:textColor="#ffffff"
                android:textSize="20dp"
                android:onClick="clickToGroup"/>
@@ -82,7 +82,7 @@
                android:id="@+id/button3"
                android:gravity="center"
                android:layout_marginTop="30dp"
-               android:background="#9af2812c"
+               android:background="#006666"
                android:textColor="#ffffff"
                android:textSize="20dp"
                android:onClick="clickToAllCom"/>
