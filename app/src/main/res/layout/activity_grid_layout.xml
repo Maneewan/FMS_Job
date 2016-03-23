@@ -12,11 +12,10 @@
     tools:context="maneewan.fms_job.GridLayout"
     android:id="@+id/gridLayout">
     <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:gravity="center"
+        android:layout_width="150px"
+        android:layout_height="180px"
         android:src="@drawable/poll_1"
         android:id="@+id/imageGrid"
-        android:layout_marginTop="5dp"/>
+        />
 
 </LinearLayout>

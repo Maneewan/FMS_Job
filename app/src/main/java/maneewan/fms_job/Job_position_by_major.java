@@ -74,7 +74,7 @@ public class Job_position_by_major extends AppCompatActivity implements AdapterV
 
             try {
                 objects.add(new ContentItem(jsonArrayMajor.getJSONObject(i).getString("company_name"),
-                        jsonArrayMajor.getJSONObject(i).getString("major_name")));
+                        jsonArrayMajor.getJSONObject(i).getString("job_name")));
                 id_job_position_main[i] = jsonArrayMajor.getJSONObject(i).getString("id_job_position_main");
                 id_major[i] = jsonArrayMajor.getJSONObject(i).getString("id_major");
                 id_job[i] = jsonArrayMajor.getJSONObject(i).getString("id_job");
