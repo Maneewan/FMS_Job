@@ -121,8 +121,6 @@ public class Job_position_by_major extends AppCompatActivity implements AdapterV
         alertDialog.show();
 
     }
-
-
     private class ContentItem {
         String name;
         String desc;
@@ -166,7 +164,7 @@ public class Job_position_by_major extends AppCompatActivity implements AdapterV
 
         private class ViewHolder {
 
-            TextView name_company,name,d1;
+            TextView name_company,name;
         }
     }
     public JSONArray getListMajor() {

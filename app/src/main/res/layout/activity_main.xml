@@ -8,14 +8,14 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="maneewan.fms_job.MainActivity"
-    android:background="#dfdadd"
+    android:background="#ded9dc"
     android:orientation="vertical">
     <GridView
         android:id="@+id/GridViewCustom"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:columnWidth="120dp"
-        android:numColumns="auto_fit"
+        android:columnWidth="200dp"
+        android:numColumns="2"
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"
         android:stretchMode="columnWidth"

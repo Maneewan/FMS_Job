@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,48 +14,48 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#c54ac7">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#c54ac7">
 
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.2"
-            android:src="@drawable/feed_h"
-            android:background="#ff0066"
-             />
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.2"
-            android:src="@drawable/company_h"
-            android:background="#00ffffff"
-            android:onClick="clickToCompany2" />
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.2"
-            android:src="@drawable/job_h"
-            android:background="#00ffffff"
-            android:onClick="clickToJob2" />
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.2"
-            android:src="@drawable/layout_h"
-            android:background="#00ffffff"
-            android:onClick="clickToLayout2" />
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.2"
-            android:src="@drawable/poll_h"
-            android:background="#00ffffff"
-            android:onClick="clickToPoll2" />
-    </LinearLayout>
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:src="@drawable/feed_h"
+                android:background="#ff0066"
+                />
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:src="@drawable/company_h"
+                android:background="#00ffffff"
+                android:onClick="clickToCompany2" />
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:src="@drawable/job_h"
+                android:background="#00ffffff"
+                android:onClick="clickToJob2" />
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:src="@drawable/layout_h"
+                android:background="#00ffffff"
+                android:onClick="clickToLayout2" />
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:src="@drawable/poll_h"
+                android:background="#00ffffff"
+                android:onClick="clickToPoll2" />
+        </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -69,14 +70,15 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:gravity="center_vertical"/>
+        </LinearLayout>
             <ListView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/listviewNews"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp">
             </ListView>
-        </LinearLayout>
+
     </LinearLayout>
 
-</LinearLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

@@ -44,7 +44,7 @@ import java.util.List;
 public class FeedNewsActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     String[] id_news,news_topic,news_image,news_date_update,news_detail;
-    //private SwipeRefreshLayout swipeLayout;
+    SwipeRefreshLayout mSwipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,24 +75,24 @@ public class FeedNewsActivity extends AppCompatActivity implements AdapterView.O
         final ListView lv = (ListView) findViewById(R.id.listviewNews);
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(this);
-
-        /*final SwipeRefreshLayout swipeLayout = (SwipeRefreshLayout)findViewById(R.id.refresh_news);
+        final SwipeRefreshLayout swipeLayout = (SwipeRefreshLayout)findViewById(R.id.refresh_news);
         swipeLayout.setColorSchemeResources(R.color.company, R.color.feed, R.color.job, R.color.layout);
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
-
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                       swipeLayout.setRefreshing(false);
+                        swipeLayout.setRefreshing(false);
+                        Intent i = new Intent(FeedNewsActivity.this, FeedNewsActivity.class);
+
+                        startActivity(i);
                     }
                 }, 2000);
             }
         });
-*/
     }
+
 
     @Override
     public void onItemClick(AdapterView<?> av, View v, int pos, long arg3) {
@@ -112,7 +112,7 @@ public class FeedNewsActivity extends AppCompatActivity implements AdapterView.O
     }
     private class MyAdapter extends ArrayAdapter<ContentItem> {
 
-        public MyAdapter(Context context, List<ContentItem> objects) {
+        public MyAdapter(FeedNewsActivity context, List<ContentItem> objects) {
             super(context, 0, objects);
         }
 
@@ -189,6 +189,7 @@ public class FeedNewsActivity extends AppCompatActivity implements AdapterView.O
         }
         return jsonArray;
     }
+
 
     public void clickToFeed2(View view) {
 

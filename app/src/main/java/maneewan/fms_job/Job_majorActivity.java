@@ -52,7 +52,8 @@ import javax.net.ssl.HttpsURLConnection;
 public class Job_majorActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     HttpURLConnection connection = null;
-    String[] id_major;
+    String[] id_major,major_name;
+    JSONArray jsonArray = null;
 
 
     @Override
@@ -68,6 +69,7 @@ public class Job_majorActivity extends AppCompatActivity implements AdapterView.
         ArrayList<ContentItem> objects = new ArrayList<ContentItem>();
         JSONArray jsonArrayMajor = getListMajor();
         id_major = new String[jsonArrayMajor.length()];
+        major_name = new String[jsonArrayMajor.length()];
         for (int i = 0; i < jsonArrayMajor.length(); i++) {
             try {
                 objects.add(new ContentItem(String.valueOf(i + 1), jsonArrayMajor.getJSONObject(i).getString("major_name")));
@@ -76,8 +78,8 @@ public class Job_majorActivity extends AppCompatActivity implements AdapterView.
                 e.printStackTrace();
             }
         }
-        MyAdapter adapter = new MyAdapter(this, objects);
 
+        MyAdapter adapter = new MyAdapter(this, objects);
         ListView lv = (ListView) findViewById(R.id.listviewmajor);
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(this);
@@ -88,7 +90,6 @@ public class Job_majorActivity extends AppCompatActivity implements AdapterView.
         i = new Intent(this, Job_position_by_major.class);
         i.putExtra("id_major", id_major[pos]);
         startActivity(i);
-        //finish();
     }
     private class ContentItem {
         String name;
@@ -117,7 +118,6 @@ public class Job_majorActivity extends AppCompatActivity implements AdapterView.
                 holder = new ViewHolder();
 
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.listmajor, null);
-                //holder.tvName = (TextView) convertView.findViewById(R.id.tvName);
                 holder.name = (TextView) convertView.findViewById(R.id.name);
 
                 convertView.setTag(holder);
@@ -126,14 +126,13 @@ public class Job_majorActivity extends AppCompatActivity implements AdapterView.
                 holder = (ViewHolder) convertView.getTag();
             }
 
-            //holder.tvName.setText(c.name);
             holder.name.setText(c.desc);
             return convertView;
         }
 
         private class ViewHolder {
 
-            TextView tvName,name;
+            TextView name;
         }
     }
     public JSONArray getListMajor() {
