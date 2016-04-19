@@ -84,6 +84,7 @@ public class GridLayout extends ArrayAdapter {
         return row;
     }
 
+
     public JSONArray getLayout() {
         InputStream is = null;
         String result = null;

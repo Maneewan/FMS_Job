@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -47,7 +49,6 @@ public class Company_groupActivity extends AppCompatActivity implements AdapterV
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
-
         ArrayList<ContentItem> objects = new ArrayList<ContentItem>();
         JSONArray jsonArrayCompany = getListCompany();
         company_group = new String[jsonArrayCompany.length()];
@@ -65,6 +66,36 @@ public class Company_groupActivity extends AppCompatActivity implements AdapterV
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(this);
     }
+    public void clickToFeed(View view) {
+
+        Intent i = new Intent(Company_groupActivity.this,FeedNewsActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_out, R.anim.fade_out);
+    }
+    public void clickToCompany(View view) {
+
+        Intent i = new Intent(Company_groupActivity.this,CompanyActivity.class);
+        startActivity(i);
+    }
+    public void clickToJob(View view) {
+
+        Intent i = new Intent(Company_groupActivity.this,JobActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_in);
+    }
+    public void clickToLayout(View view) {
+
+        Intent i = new Intent(Company_groupActivity.this,LayoutActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_in);
+    }
+    public void clickToPoll(View view) {
+
+        Intent i = new Intent(Company_groupActivity.this,PollActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_in);
+    }
+
     public void onItemClick(AdapterView<?> av, View v, int pos, long arg3) {
         Intent i;
         i = new Intent(this, Company_by_group.class);
@@ -117,6 +148,32 @@ public class Company_groupActivity extends AppCompatActivity implements AdapterV
 
             TextView tvName,name;
         }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.home) {
+            Intent i;
+            i = new Intent(Company_groupActivity.this, MainActivity.class);
+            startActivity(i);
+            finish();
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_in);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
     public JSONArray getListCompany() {
         InputStream is = null;

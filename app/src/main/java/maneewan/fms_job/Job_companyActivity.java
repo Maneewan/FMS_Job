@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -74,6 +76,35 @@ public class Job_companyActivity extends AppCompatActivity implements AdapterVie
     lv.setOnItemClickListener(this);
 
 }
+    public void clickToFeed3(View view) {
+
+        Intent i = new Intent(Job_companyActivity.this,FeedNewsActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_out, R.anim.fade_out);
+    }
+    public void clickToCompany3(View view) {
+
+        Intent i = new Intent(Job_companyActivity.this,CompanyActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_out, R.anim.fade_out);
+    }
+    public void clickToJob3(View view) {
+
+        Intent i = new Intent(Job_companyActivity.this,JobActivity.class);
+        startActivity(i);
+    }
+    public void clickToLayout3(View view) {
+
+        Intent i = new Intent(Job_companyActivity.this,LayoutActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_in);
+    }
+    public void clickToPoll3(View view) {
+
+        Intent i = new Intent(Job_companyActivity.this,PollActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_in);
+    }
     public static Drawable LoadImageFromWebOperations(String nameImage) {
         try {
             InputStream is = (InputStream) new URL(MainActivity.mainhttp + "/fms_job//assets/uploads/" + nameImage).getContent();
@@ -139,6 +170,32 @@ private class MyAdapter extends ArrayAdapter<ContentItem> {
         ImageView imageCompany;
     }
 }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.home) {
+            Intent i;
+            i = new Intent(Job_companyActivity.this, MainActivity.class);
+            startActivity(i);
+            finish();
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_in);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
     public JSONArray getListCompany() {
         InputStream is = null;
         String result = null;

@@ -8,6 +8,8 @@ import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
@@ -154,26 +156,56 @@ public class PollActivity extends AppCompatActivity {
 
         dialog.show();
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.home) {
+            Intent i;
+            i = new Intent(PollActivity.this, MainActivity.class);
+            startActivity(i);
+            finish();
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_in);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     public void clickToFeed5(View view) {
 
         Intent i = new Intent(PollActivity.this,FeedNewsActivity.class);
         startActivity(i);
+        overridePendingTransition(R.anim.fade_out, R.anim.fade_out);
     }
     public void clickToCompany5(View view) {
 
         Intent i = new Intent(PollActivity.this,CompanyActivity.class);
         startActivity(i);
+        overridePendingTransition(R.anim.fade_out, R.anim.fade_out);
     }
     public void clickToJob5(View view) {
 
         Intent i = new Intent(PollActivity.this,JobActivity.class);
         startActivity(i);
+        overridePendingTransition(R.anim.fade_out, R.anim.fade_out);
     }
     public void clickToLayout5(View view) {
 
         Intent i = new Intent(PollActivity.this,LayoutActivity.class);
         startActivity(i);
+        overridePendingTransition(R.anim.fade_out, R.anim.fade_out);
     }
     public void clickToPoll5(View view) {
 

@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -85,10 +87,9 @@ public class FeedNewsActivity extends AppCompatActivity implements AdapterView.O
                     public void run() {
                         swipeLayout.setRefreshing(false);
                         Intent i = new Intent(FeedNewsActivity.this, FeedNewsActivity.class);
-
                         startActivity(i);
                     }
-                }, 2000);
+                }, 3000);
             }
         });
     }
@@ -101,6 +102,7 @@ public class FeedNewsActivity extends AppCompatActivity implements AdapterView.O
         i = new Intent(this, News_detail.class);
         i.putExtra("id_news", id_news[pos]);
         startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_in);
     }
 
     private class ContentItem {
@@ -143,6 +145,32 @@ public class FeedNewsActivity extends AppCompatActivity implements AdapterView.O
         private class ViewHolder {
             TextView name;
         }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.home) {
+            Intent i;
+            i = new Intent(FeedNewsActivity.this, MainActivity.class);
+            startActivity(i);
+            finish();
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_in);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
     public JSONArray getListNews() {
         InputStream is = null;
@@ -200,21 +228,25 @@ public class FeedNewsActivity extends AppCompatActivity implements AdapterView.O
 
         Intent i = new Intent(FeedNewsActivity.this,CompanyActivity.class);
         startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_in);
     }
     public void clickToJob2(View view) {
 
         Intent i = new Intent(FeedNewsActivity.this,JobActivity.class);
         startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_in);
     }
     public void clickToLayout2(View view) {
 
         Intent i = new Intent(FeedNewsActivity.this,LayoutActivity.class);
         startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_in);
     }
     public void clickToPoll2(View view) {
 
         Intent i = new Intent(FeedNewsActivity.this,PollActivity.class);
         startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_in);
     }
 
 

@@ -2,6 +2,7 @@ package maneewan.fms_job;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.StrictMode;
@@ -10,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -96,6 +99,62 @@ public class Company_allActivity extends AppCompatActivity implements AdapterVie
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(this);
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.home) {
+            Intent i;
+            i = new Intent(Company_allActivity.this, MainActivity.class);
+            startActivity(i);
+            finish();
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_in);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    public void clickToFeed(View view) {
+
+        Intent i = new Intent(Company_allActivity.this,FeedNewsActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_out, R.anim.fade_out);
+    }
+    public void clickToCompany(View view) {
+
+        Intent i = new Intent(Company_allActivity.this,CompanyActivity.class);
+        startActivity(i);
+    }
+    public void clickToJob(View view) {
+
+        Intent i = new Intent(Company_allActivity.this,JobActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_in);
+    }
+    public void clickToLayout(View view) {
+
+        Intent i = new Intent(Company_allActivity.this,LayoutActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_in);
+    }
+    public void clickToPoll(View view) {
+
+        Intent i = new Intent(Company_allActivity.this,PollActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_in);
+    }
+
 
     public static Drawable LoadImageFromWebOperations(String nameImage) {
         try {

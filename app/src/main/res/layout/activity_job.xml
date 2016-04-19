@@ -71,7 +71,7 @@
                 android:id="@+id/button3"
                 android:gravity="center"
                 android:layout_marginTop="100dp"
-                android:background="#FF0066"
+                android:background="@drawable/colorbtn3"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
                 android:onClick="clickToJobMajor"/>
@@ -82,7 +82,7 @@
                 android:id="@+id/button3"
                 android:gravity="center"
                 android:layout_marginTop="30dp"
-                android:background="#3366FF"
+                android:background="@drawable/colorbtn4"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
                 android:onClick="clickToJobCom"/>
@@ -90,10 +90,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:text="ตำแหน่งงานทั้งหมด"
-                android:id="@+id/button3"
+                android:id="@+id/button5"
                 android:gravity="center"
                 android:layout_marginTop="30dp"
-                android:background="#FF3333"
+                android:background="@drawable/colorbtn5"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
                 android:onClick="clickToJobAll"/>
