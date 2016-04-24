@@ -36,7 +36,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String mainhttp = "http://172.27.14.94";
+    public static String mainhttp = "http://172.27.24.231";
     GridView gridView;
     GridViewActivity gridViewHome;
     String[] event_no, event_name;

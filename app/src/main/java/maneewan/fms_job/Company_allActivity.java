@@ -97,7 +97,9 @@ public class Company_allActivity extends AppCompatActivity implements AdapterVie
 
         ListView lv = (ListView) findViewById(R.id.listviewcompanyall);
         lv.setAdapter(adapter);
-        lv.setOnItemClickListener(this);
+        if (adapter != null){
+            lv.setOnItemClickListener(this);
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -227,8 +229,14 @@ public class Company_allActivity extends AppCompatActivity implements AdapterVie
             convertView.setTag(holder);
             holder.name.setText(c.desc);
             Drawable drawable = LoadImageFromWebOperations(c.namepic);
-            if(drawable != null)
-                holder.imageCompany.setImageDrawable(drawable);
+            if(drawable != null){
+                holder.imageCompany.setImageDrawable(drawable);}
+            if(drawable == null){
+                holder.imageCompany.setImageDrawable(null);
+                holder.name = (TextView) convertView.findViewById(R.id.name);
+                holder.name.setText("");
+            }
+
             return convertView;
         }
 

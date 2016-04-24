@@ -3,6 +3,7 @@ package maneewan.fms_job;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.StrictMode;
@@ -60,6 +61,8 @@ public class LayoutActivity extends AppCompatActivity{
         getLayout();
         //start grid view
         gridView = (GridView) findViewById(R.id.GridViewLayout);
+        gridView.setBackgroundColor(Color.WHITE);
+
         // Create the Custom Adapter Object
         gridViewHome = new GridLayout(this);
         // Set the Adapter to GridView
